@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10">
+
+      <div class="gush">
+        <h2>{{title}}</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>תאריך</th>
+              <th>סוג</th>
+              <th>תיאור</th>
+              <th>פעולות</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="event in events">
+              <td>{{event.date}}</td>
+              <td>{{event.type}}</td>
+              <td>{{event.description}}</td>
+              <td>{{event.actions}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="span2">
+
+      SMALL MAP
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span4">
+
+      <div class="search well">
+        <span class="point-to-map pull-right">
+          או פשוט בחר גוש במפה >
+        </span>
+        <label for="address">חפש גוש לפי כתובת:</label>
+        <input id="address" ng-model="address" type="text" placeholder="(בקרוב...)" disabled>
+      </div>
+
+      <div class="introduction well">
+        <h3>מה זה תב"ע פתוחה?</h3>
+        <p>פרויקט תב"ע פתוחה נועד לאפשר גישה נוחה לצבור למידע על תוכניות בניה. הפרויקט בנוי בקוד פתוח, גם את ואתה יכולים לתרום <a href="https://github.com/niryariv/citymap-server">בצד השרת</a> או <a href="https://github.com/niryariv/citymap-client">הממשק</a>.<!--  ליצירת קשר, פנו ל niryariv@gmail.com --></p>
+      </div>
+
+    </div>
+    <div class="span8">
+
+      <leaflet id="overviewMap"></leaflet>
+
+    </div>
+  </div>
+</div>
