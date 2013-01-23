@@ -60,11 +60,12 @@
 
 	<script>
 
-		var RUNNING_LOCAL = (document.location.host == 'localhost' || document.location.host == '127.0.0.1')
+		var RUNNING_LOCAL = false;//(document.location.host == 'localhost' || document.location.host == '127.0.0.1')
 
 		var API_URL = RUNNING_LOCAL ? 'http://0.0.0.0:5000/' : 'http://enigmatic-peak-9169.herokuapp.com/';
 		
 		function show_data(url){
+			console.log(url);
 			new PDFObject({ url: url }).embed("modal-doc");
 			$("#doc_new_window").attr("href", url);
 			$("#docModal").modal().css({ width: '90%', height: '80%', 'margin-left': function () { return -($(this).width() / 2); } });
@@ -205,4 +206,4 @@
 	</script>
 </body>
 </html>
-<!- Jerusalem, winter 2013, January 9th snow storm -->
+<!-- Jerusalem, winter 2013, January 9th snow storm -->
