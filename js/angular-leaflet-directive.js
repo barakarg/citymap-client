@@ -46,7 +46,7 @@
                             },
                             'click': function() { 
                                 // $("#info").html("עוד מעט..."); 
-                                // location.hash = "#/gush/" + feature.properties.Name;
+                                location.hash = "#/gush/" + feature.properties.Name;
                                 // // get_gush(feature.properties.Name);
                             }
                         });

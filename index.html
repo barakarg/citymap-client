@@ -65,7 +65,6 @@
 		var API_URL = RUNNING_LOCAL ? 'http://0.0.0.0:5000/' : 'http://enigmatic-peak-9169.herokuapp.com/';
 		
 		function show_data(url){
-			console.log(url);
 			new PDFObject({ url: url }).embed("modal-doc");
 			$("#doc_new_window").attr("href", url);
 			$("#docModal").modal().css({ width: '90%', height: '80%', 'margin-left': function () { return -($(this).width() / 2); } });
