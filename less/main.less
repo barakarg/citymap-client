@@ -1,0 +1,108 @@
+// Scaffolding
+// -------------------------
+@bodyBackground:        @backgroundColor; 
+@baseFontFamily:        @alefFontFamily;
+
+@font-face{
+  font-family: 'Alef';
+  src: url('../font/Alef-regular.eot');
+  src: url('../font/Alef-regular.eot?#iefix')
+       format('embedded-opentype'),
+       url('../font/Alef-regular.woff') format('woff'),
+       url('../font/Alef-regular.ttf') format('truetype'),
+       url('../font/Alef-regular.svg#webfont') format('svg');
+}
+
+body {
+  text-align: right;
+  direction: rtl;
+
+  background:url('../img/lil_fiber.png') repeat;
+  /* data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAG0lEQVQIW2OMq7zlw4ADMIIkF7WrbcEmP+gkAarWGgXyq5CNAAAAAElFTkSuQmCC */
+}
+
+.navbar {
+  .navbar-inner {
+    border-radius: 0;
+  }
+}
+
+.well {
+  background: white;
+}
+
+.point-to-map {
+  width: 100px;
+  color: red;
+  padding:10px 0;
+}
+
+div.map {
+    direction: ltr;
+    border: 1px solid #666;
+    box-shadow: 0px 0px 4px 0px #aaa;
+    height: 200px;
+}
+
+div#overviewMap {
+    height: 560px;
+    margin-top: -40px;
+}
+
+
+.row {
+  div[class*='span'] {
+    .spacer {
+      // border-right: 1px solid black;
+      margin: 12px 0px;
+    }
+  }
+  div[class*='span']:first-child {
+    .spacer {
+      // border-right: 0;
+      margin-right: 12px;
+    }
+  }
+  div[class*='span']:last-child .spacer {
+    margin-left: 12px;
+  }
+
+}
+.spacer {
+  margin: 12px;
+}
+
+.fill {
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+div.modal {
+  top: 50px;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+}
+
+div#docModal {
+  width: 90%;
+}
+
+div#infoModal {
+  width: 70%;
+
+  .tab-content {
+    margin: 0 30px;
+  }
+}
+
+td.links {
+  p {
+    float: right;
+    margin-left: 10px;
+  }
+}

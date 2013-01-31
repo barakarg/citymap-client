@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9">
+
+      <div class="gush well">
+        <h2>תכניות בגוש {{gushId}}</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>פתח באתר ממי</th>
+              <th>מספר</th>
+              <th>תאריך</th>
+              <th>סטטוס</th>
+              <th>תיאור</th>
+              <th>פעולות</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="plan in plans">
+              <td><a href="{{ planLink + plan.number }}"><i class="icon-share"></i></a></td>
+              <td>{{ plan.number }}</td>
+              <td>{{ [plan.day, plan.month, plan.year].join('/') }}</td>
+              <td>{{plan.status}}</td>
+              <td>{{plan.essence}}</td>
+              <td class="links">
+                <p ng-repeat="l in plan.tasrit_link">
+                  <a ng-click="showDocModal('tasrit', l)"><i class="icon-folder-open"></i></a>
+                </p>
+                <p ng-repeat="l in plan.takanon_link">
+                  <a ng-click="showDocModal('takanon', l)"><i class="icon-list"></i></a>
+                </p>
+                <p ng-repeat="l in plan.nispahim_link">
+                  <a ng-click="showDocModal('nispahim', l)"><i class="icon-folder-close"></i></a>
+                </p>
+                <p ng-repeat="l in plan.files_link">
+                  <a ng-click="showDocModal('files', l)"><i class="icon-download-alt"></i></a>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="span3">
+
+      <leaflet></leaflet>
+
+      <p style="margin-top:50px">
+        <!-- <a class="btn" bs-modal="'partials/modal.html'">הצג מודל</a> -->
+        <!-- <a class="btn" ng-click="setModalTemplate('tasrit')" onclick="$('#docModal').modal()">הצג מודל תשריט</a> -->
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<div id="docModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="docModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="docModalLabel">צפיה במסמך</h3>
+  </div>
+  <div class="modal-body">
+    <div ng-include src="modalTemplate.url"></div>
+    <div id="docContainer"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">סגור</button>
+    <a class="btn btn-primary" href="" target="_blank" id="doc_new_window"><i class="icon-zoom-in icon-white"></i> פתח בחלון חדש</a>
+  </div>
+</div>
+
