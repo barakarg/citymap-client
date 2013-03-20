@@ -18,7 +18,7 @@ function GushCtrl($scope, $routeParams, $http) {
   $scope.gushId = $routeParams.gushId;
   
   $scope.planLink = 'http://www.mmi.gov.il/IturTabot/taba2.asp?Gush=' + $scope.gush_id + '&MisTochnit=';
-  $scope.plansAPILink = 'http://enigmatic-peak-9169.herokuapp.com/gush/' + $scope.gushId + '/plans';
+  $scope.plansAPILink = 'http://opentaba-server.herokuapp.com/gush/' + $scope.gushId + '/plans';
 
   // load plans data
   $http.get($scope.plansAPILink).success(function(data) {
