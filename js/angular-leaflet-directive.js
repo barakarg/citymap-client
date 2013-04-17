@@ -11,7 +11,8 @@
         center: "=center",
         marker: "=marker",
         message: "=message",
-        zoom: "=zoom"
+        zoom: "=zoom",
+        gushId: "=gushid"
       },
       template: '<div class="map"></div>',
 
@@ -24,7 +25,11 @@
             gushim_url = 'data/gushim.min.json',
             default_center_coords = [31.765, 35.17],
             default_zoom = 13,
-            max_zoom = 18;
+            max_zoom = 18,
+
+            map_center = scope.center || default_center_coords;
+            // map_latlng = new L.LatLng(parseFloat(map_center[0]), parseFloat(map_center[1]));
+            // console.log(window.x = map_center);
 
         L.tileLayer(tile_url, { maxZoom: max_zoom }).addTo(map);
         map_center = scope.center || default_center_coords;
@@ -34,32 +39,39 @@
 
         // add 'gushim' layer
         $http.get(gushim_url).success(function(data) {
-            L.geoJson(data,
-                {
-                    onEachFeature: function(feature, layer) {
-                        layer.bindPopup(feature.properties.Name + " גוש ");
-                        layer.on({
-                            'mouseover': function() {
-                                this.setStyle({ opacity: 0, color: "red" });
-                            },
-                            'mouseout': function() {
-                                this.setStyle({ opacity: 0.95, color: "#777" });
-                            },
-                            'click': function() {
-                                // $("#info").html("עוד מעט..."); 
-                                var coords = feature.geometry.coordinates[0][0];
-                                location.hash = "#/gush/" + feature.properties.Name + "/"+coords[0]+","+coords[1];
-                                // // get_gush(feature.properties.Name);
-                            }
-                        });
-                    },
-                    style : {
-                        "color": "#777",
+            var onEachFeature = function(feature, layer) {
+                    // layer.bindPopup(feature.properties.Name + " גוש ");
+                    layer.on({
+                        'mouseover': highlightFeature,
+                        'mouseout': resetHighlight,
+                        'click': function() {
+                            var coords = feature.geometry.coordinates[0][0];
+                            location.hash = "#/gush/" + feature.properties.Name + "/"+coords[1]+","+coords[0];
+                        }
+                    });
+                },
+
+                style = function(feature) {
+                    return {
+                        "color": (feature.properties.Name == scope.gushId) ? "blue" : "#777",
                         "weight": 1,
                         "opacity": 0.9
-                    }
-                }
-            ).addTo(map);
+                    };
+                },
+
+                highlightFeature = function(e) {
+                    var layer = e.target;
+                    layer.setStyle({ opacity: 0, color: "red" });
+                },
+
+                resetHighlight = function(e) {
+                    geojson.resetStyle(e.target);
+                },
+
+                geojson = L.geoJson(data, {
+                    onEachFeature: onEachFeature,
+                    style: style
+                }).addTo(map);
         });
 
       }

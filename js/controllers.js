@@ -25,9 +25,8 @@ function GushCtrl($scope, $routeParams, $http) {
 
   // });
 
-  console.log($scope);
-
   $scope.gushId = $routeParams.gushId;
+  $scope.center = [$routeParams.gushLat, $routeParams.gushLong];
 
   $scope.planLink = 'http://www.mmi.gov.il/IturTabot/taba2.asp?Gush=' + $scope.gush_id + '&MisTochnit=';
   $scope.plansAPILink = 'http://opentaba-server.herokuapp.com/gush/' + $scope.gushId + '/plans';
