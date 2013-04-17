@@ -6,6 +6,6 @@ angular.module('otaba', ['leaflet-directive']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
       when('/', {templateUrl: 'partials/map-overview.html',   controller: MapOverviewCtrl}).
-      when('/gush/:gushId', {templateUrl: 'partials/gush.html', controller: GushCtrl}).
+      when('/gush/:gushId/:gushLat,:gushLong', {templateUrl: 'partials/gush.html', controller: GushCtrl}).
       otherwise({redirectTo: '/'});
 }]);
